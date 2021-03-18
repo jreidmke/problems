@@ -27,6 +27,8 @@ function getRow(rowIndex, tri=[[1], [1, 1]]) {
     return getRow(rowIndex, tri);
 };
 
+//intersecting arrays
+
 function intersect(nums1, nums2) {
     //start by taking the smaller array
     let smallArr = nums1.length > nums2.length ? nums2 : nums1;
@@ -45,3 +47,14 @@ function intersect(nums1, nums2) {
     };
     return intersection;
 }
+
+//Max stock profit
+var maxProfit = function(prices) {
+    let min = Number.MAX_SAFE_INTEGER; 
+    let maxProfit = 0;
+    for(let i=0; i < prices.length; i++) {
+        min = Math.min(min, prices[i]);
+        maxProfit = Math.max(maxProfit, prices[i] - min);
+    };
+    return maxProfit;
+};
