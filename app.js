@@ -26,3 +26,22 @@ function getRow(rowIndex, tri=[[1], [1, 1]]) {
     tri.push(subArr);
     return getRow(rowIndex, tri);
 };
+
+function intersect(nums1, nums2) {
+    //start by taking the smaller array
+    let smallArr = nums1.length > nums2.length ? nums2 : nums1;
+    let largeArr = nums1.length < nums2.length ? nums2 : nums1;
+    if(nums1.length===nums2.length) {
+            smallArr=nums2;
+            largeArr=nums1;
+    }
+    let currIdx = 0;
+    let intersection = [];
+    for(let i=0; i < largeArr.length; i++) {
+            if(smallArr[currIdx]===largeArr[i]) {
+                    intersection.push(largeArr[i]);
+                    ++currIdx;
+            };
+    };
+    return intersection;
+}
