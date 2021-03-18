@@ -58,3 +58,20 @@ var maxProfit = function(prices) {
     };
     return maxProfit;
 };
+
+//Happy Number
+var isHappy = function(n) {
+    let curr = n;
+    let seen = {};
+    const getDigits = number => `${number}`.split('').map(str => Number(str));
+    while(curr !== 1) {
+        let digits = getDigits(curr);
+        curr = digits.reduce((acc, curr) => acc + Math.pow(curr, 2), 0);
+        if(seen[curr]===undefined) {
+            seen[curr]=true;
+        } else {
+            return false;
+        }
+    }
+    return true;
+};
