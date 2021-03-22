@@ -168,3 +168,21 @@ function climbStairs(n) {
     }
     return dp[n];
 };
+
+//Palindrome
+
+function isPalindrome(s) {
+    s=s.replace(/\W/g, '').toLowerCase();
+    let left=0;
+    let right=s.length-1;
+    while(left <= right) {
+        if(s[left]===s[right]) {
+            ++left;
+            --right;
+        }
+        if(left >= right) {
+            return true;
+        }
+    }
+    return false;
+};
