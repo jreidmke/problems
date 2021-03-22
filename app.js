@@ -102,4 +102,69 @@ function reverseInteger(num) {
     return sum;
 };
 
-reverseInteger(123)
+reverseInteger(123);
+
+//Two Sum Sum of two numbers
+var twoSum = function(arr, sum) {
+    for(let i = 0; i < arr.length; i++) {
+        let addened = sum-arr[i];
+        if(arr.slice(i+1).lastIndexOf(addened) !== -1) {
+            return [i, arr.lastIndexOf(addened)]
+        } else {
+            continue;
+        };
+    };
+    return -1;
+};
+
+//Square Root
+
+const mySqrt = function(x) {
+    let result = 1;
+    while (result*result <= x) result++;
+    return result - 1;
+};
+
+var mySqrt = function(x) {
+    if(x === 0) return 0;
+    if(x === 1) return 1;
+        for(let i = 0; i <= x; i++) {
+        if(i * i < x) {
+            continue
+        } else if(i * i > x) {
+            return i - 1;
+        } else {
+            return i;
+        }
+    }
+};
+
+
+//Needle haystack substring
+var strStr = function(haystack, needle) {
+    if(haystack==="" && needle==="") return 0;
+    return haystack.indexOf(needle);
+};
+
+//Longest common prefix
+
+var longestCommonPrefix = function(strs) {
+    'use strict';
+    if (strs === undefined || strs.length === 0) { return ''; }
+    
+    return strs.reduce((prev, next) => {
+        let i = 0;
+        while (prev[i] && next[i] && prev[i] === next[i]) i++;
+        return prev.slice(0, i);
+    });
+};
+
+//Climb Stairs Stair climb stare climbing 
+
+function climbStairs(n) {
+    let dp = new Array(n+1);
+    for (let i = 2; i <= n; i++) {
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    return dp[n];
+};
