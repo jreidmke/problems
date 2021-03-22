@@ -87,3 +87,19 @@ function maxSubArray(A) {
     }
     return max;
   }
+
+//Reverse Integer
+function reverseInteger(num) {
+    let sum = 0;
+    let one = "1";
+    let revArr = num.toString().split('');
+    console.log(revArr)
+    for(let i = 0; i < revArr.length; i++) {
+        let zeros = "0".repeat(i);
+        let multiplier = parseInt(one + zeros)
+        sum += (parseInt(revArr[i]) * multiplier);
+    }
+    return sum;
+};
+
+reverseInteger(123)
