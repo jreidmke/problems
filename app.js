@@ -186,3 +186,12 @@ function isPalindrome(s) {
     }
     return false;
 };
+
+function pivot(arr) {
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i-1] < arr[i] && arr[i] > arr[i+1]) {
+            return i;
+        };
+        continue;
+    }
+}
