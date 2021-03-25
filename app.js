@@ -305,3 +305,21 @@ function find_boundary(arr) {
 }
 
 find_boundary([false])
+
+
+function findFirstOccurrence(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] < target) left = mid + 1;
+        if(arr[mid] > target || arr[mid] === target && arr[mid - 1] === target) right = mid - 1;
+        if(arr[mid] === target && arr[mid - 1] !== target) return mid
+    };
+    return -1;
+};
+
+const a = [1, 22, 22, 33, 50, 100, 20000]
+const t = 33;
+
+findFirstOccurrence(a, t)
