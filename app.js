@@ -195,3 +195,46 @@ function pivot(arr) {
         continue;
     }
 }
+
+
+//BINARY SEARCH search binary
+function pivot(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let count = 0;
+    let display;
+    while(left <= right && count < 10) {
+        let mid = Math.floor((left + right) / 2);
+
+        if(right === left + 1) {
+            if(arr[left] < arr[right]) {
+                return right
+            } else {
+                return left
+            };
+        };
+
+
+        if(arr[mid - 1] < arr[mid] && arr[mid] < arr[mid + 1]) {
+            left = mid + 1;
+        };
+
+        if(arr[mid - 1] > arr[mid] && arr[mid] > arr[mid + 1]) {
+            right = mid - 1;
+        };
+
+        if(arr[mid - 1] < arr[mid] && arr[mid + 1] < arr[mid]) {
+            return mid;
+        }
+
+        if(arr[mid + 1] === undefined && arr[mid - 1] === undefined) {
+            return mid;
+        }
+
+        display=arr.slice(left, right + 1);
+        count++;
+
+    };
+}
+
+pivot([1, 2, 3, 4, 5])
