@@ -201,9 +201,8 @@ function pivot(arr) {
 function pivot(arr) {
     let left = 0;
     let right = arr.length - 1;
-    let count = 0;
-    let display;
-    while(left <= right && count < 10) {
+
+    while(left <= right) {
         let mid = Math.floor((left + right) / 2);
 
         if(right === left + 1) {
@@ -230,11 +229,53 @@ function pivot(arr) {
         if(arr[mid + 1] === undefined && arr[mid - 1] === undefined) {
             return mid;
         }
-
-        display=arr.slice(left, right + 1);
-        count++;
-
     };
 }
 
 pivot([1, 2, 3, 4, 5])
+
+//cleaner readable pivot
+function pivot(arr) {
+    let obj = {};
+    for(let i = 0; i < arr.length; i++) {
+        obj[arr[i]] = i
+    };
+    return obj[arr.sort((a, b) => a - b)[arr.length - 1]];
+};
+
+let x = [5, 7, 9, 13, 11, 10];
+
+pivot(x);
+
+
+function find_boundary(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    if(arr[0]===true) return 0;
+    
+    while(left < right) {
+
+        if(left === right - 1) {
+            if(arr[right]) {
+                return right;
+            } else {
+                return false;
+            }
+        };
+        
+        let mid = Math.floor((left + right) / 2);
+        
+        if(arr[mid] === true && arr[mid - 1] === false) {
+            return mid;
+        };
+
+        if(arr[mid] === true && arr[mid - 1] === true) {
+            right=mid - 1;
+        };
+
+        if(arr[mid] === false && arr[mid + 1] === false) {
+            left = mid + 1;
+        };
+    };
+    return -1;
+};
