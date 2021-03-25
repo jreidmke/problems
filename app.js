@@ -323,3 +323,31 @@ const a = [1, 22, 22, 33, 50, 100, 20000]
 const t = 33;
 
 findFirstOccurrence(a, t)
+
+function findMinRotated(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    while(left <= right) {
+        let lastEl = arr[right];
+        let mid = Math.floor((left + right) / 2);
+        if(left === right - 1) {
+            if(arr[left] < arr[right]) {
+                return left
+            } else {
+                return right;
+            }
+        }
+
+        if(arr[mid] === lastEl) return mid;
+
+        if(arr[mid] > lastEl) {
+            left = mid + 1;
+        }
+
+        if(arr[mid] < lastEl) {
+            right = mid - 1;
+        }
+        
+        lastEl = arr[right];
+    } 
+}
