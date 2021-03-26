@@ -324,6 +324,29 @@ const t = 33;
 
 findFirstOccurrence(a, t)
 
+//Better find first Occurrence
+
+function findFirstOccurrence(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    let idx = -1;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid]===target) {
+            idx=mid;
+            right = mid - 1;
+        };
+        if(arr[mid] > target) {
+            right = mid - 1;
+        };
+
+        if(arr[mid] < target) {
+            left = mid + 1;
+        };
+    };
+    return idx;
+}
+
 function findMinRotated(arr) {
     let left = 0;
     let right = arr.length - 1;
@@ -365,4 +388,23 @@ function binarySearch(arr, target) {
         if(arr[mid] === target) return mid;
     }
     return -1
+}
+
+//new square root function
+function squareRoot(n) {
+    let left = 0;
+    let right = n;
+    let root;
+    while(left <= right) {
+        let curr = Math.floor((left + right) / 2);
+        if(curr * curr > n) {
+            right = curr - 1;
+        };
+
+        if(curr * curr <= n) {
+            root = curr;
+            left = curr + 1;
+        }
+    }
+    return root;
 }
