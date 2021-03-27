@@ -451,3 +451,113 @@ function pivot(arr) {
     };
     return idx;
 };
+
+function findPivot(arr, target) {
+    let p = pivot(arr);
+    let left = 0;
+    let right = p;
+    let isLeft = true;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] === target) return mid;
+        if(left===right) {
+            isLeft = false;
+            left = p;
+            right = arr.length - 1;
+        }
+        if(isLeft) {
+            if(arr[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        } else {
+            if(arr[mid] < target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+    }
+}
+
+function findIdx(arr, target) {
+    let left = 0;
+    let p = pivot(arr);
+    let right = p;
+    let idx = -1;
+    while(true) {
+        while(left <= right) {
+            let mid = Math.floor((left + right) / 2);
+            if(arr[mid] === target) return mid;
+            if(arr[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        left=p
+        right = arr.length - 1;
+        
+        while(left <= right) {
+            let mid = Math.floor((left + right) / 2);
+            if(arr[mid] === target) return mid;
+            if(arr[mid] < target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+    }    
+    return idx;
+}
+
+//LOOK HERE TOMORROW!!!!
+
+//final pivot and find idx
+
+function pivot(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let idx;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] > arr[mid + 1] || !arr[mid + 1]) {
+            idx = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    };
+    return idx;
+};
+
+function findPivot(arr, target) {
+    let p = pivot(arr);
+    let left = 0;
+    let right = p;
+    let isLeft = true;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] === target) return mid;
+        if(left===right) {
+            isLeft = false;
+            left = p;
+            right = arr.length - 1;
+        }
+        if(isLeft) {
+            if(arr[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        } else {
+            if(arr[mid] < target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+    }
+}
