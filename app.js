@@ -408,3 +408,46 @@ function squareRoot(n) {
     }
     return root;
 }
+
+//ULTIMATE PIVOT
+
+function pivot(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let idx;
+    while(left <= right) {
+        if(left === right - 1) {
+            if(arr[left] > arr[right]) {
+                return left
+            } else {
+                return right
+            }
+        }
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] > arr[mid + 1]) {
+            idx = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        };
+    };
+    return idx;
+}
+
+//Better pivot. Even better than ultimate!!
+
+function pivot(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let idx;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] > arr[mid + 1] || !arr[mid + 1]) {
+            idx = mid;
+            right = mid - 1
+        } else {
+            left = mid + 1;
+        };
+    };
+    return idx;
+};
