@@ -561,3 +561,61 @@ function findPivot(arr, target) {
         }
     }
 }
+
+
+
+function pivot(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let idx;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] > arr[mid + 1] || !arr[mid + 1]) {
+            idx = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    };
+    return idx;
+};
+
+function findIdx(arr, target) {
+    let p = pivot(arr);
+    let left = 0;
+    let right = p;
+    let isLeft = true;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] === target) return mid;
+        if(left===right) {
+            isLeft = false;
+            left = p;
+            right = arr.length - 1;
+        }
+        
+        if(isLeft) {
+            if(arr[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        } else {
+            if(arr[mid] < target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+    }
+}
+
+const arr1 = [1, 3, 5, 6, 8, 7];
+const arr2 = [5, 6, 4, 3, 2, 1];
+const arr3 = [1, 2, 3, 4, 5, 6];
+const arr4 = [1];
+const arr5 = [6, 5, 4, 3, 2, 1];
+const arr6 = [2, 3, 4, 5, 6, 1];
+const arr7 = []
+
+findIdx(arr5, 1)
