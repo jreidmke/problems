@@ -619,3 +619,47 @@ const arr6 = [2, 3, 4, 5, 6, 1];
 const arr7 = []
 
 findIdx(arr5, 1)
+
+//FINAL The Last One
+function pivot(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let idx;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if(arr[mid] > arr[mid + 1] || !arr[mid + 1]) {
+            idx = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    };
+    return idx;
+};
+
+
+function findIdx(arr, target) {
+    let p = pivot(arr);
+    let left = 0;
+    let right = p;
+    let isLeft = true;
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if(arr[mid] === target) return mid;
+
+        if(left===right) {
+            isLeft = false;
+            left = p;
+            right = arr.length - 1;
+        }
+        
+        let operator = isLeft ? arr[mid] > target : arr[mid] < target;
+
+        if(operator) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+}
