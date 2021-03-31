@@ -663,3 +663,15 @@ function findIdx(arr, target) {
         }
     }
 }
+
+function addOne(x) {
+    return x + 1;
+};
+
+function findMostFreq(arr) {
+    let obj = {};
+    for(obj of arr) {
+        arr[obj] ? arr[obj]++ : arr[obj] = 1
+    };
+    return obj;
+}
