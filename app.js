@@ -675,3 +675,16 @@ function findMostFreq(arr) {
     };
     return obj;
 }
+
+function factorial(n) {
+    let stack = [];
+    while(n > 0) {
+        stack.push(n);
+        n -= 1;
+    };
+    let res = 1;
+    while(stack.length) {
+        res *= stack.pop();
+    };
+    return res;
+};
