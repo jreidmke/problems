@@ -702,3 +702,13 @@ function dfs(root, max) {
     total += dfs(root.right, Math.max(root.val, max));
     return total;
 };
+
+function valid_bst(root) {
+    return dfs(Number.NEGATIVE_INFINITY, root, Number.POSITIVE_INFINITY);
+};
+
+function dfs(low, root, hi) {
+    if(!root) return true;
+    if(!(low <= root.val && root.val <= hi)) return false;
+    return dfs(low, root.left, root.val) && dfs(root.val, root.right, hi);
+};
