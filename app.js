@@ -688,3 +688,17 @@ function factorial(n) {
     };
     return res;
 };
+
+function visibleTreeNode(root) {
+    return dfs(root, Number.NEGATIVE_INFINITY);
+};
+
+function dfs(root, max) {
+    if(!root)return 0;
+    let total = 0;
+    if(root.val > max) total++;
+    
+    total += dfs(root.left, Math.max(root.val, max));
+    total += dfs(root.right, Math.max(root.val, max));
+    return total;
+};
