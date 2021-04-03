@@ -712,3 +712,19 @@ function dfs(low, root, hi) {
     if(!(low <= root.val && root.val <= hi)) return false;
     return dfs(low, root.left, root.val) && dfs(root.val, root.right, hi);
 };
+
+function helper(tree) {
+    let array = [];
+    dfs(tree, array);
+    return array;
+}
+
+function dfs(node, arr) {
+    if(!node) {
+        arr.push("x");
+        return;    
+    }
+    arr.push(node.value);
+    dfs(node.left, arr);
+    dfs(node.right, arr);
+};
