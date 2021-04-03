@@ -745,3 +745,14 @@ function dfsS(root, arr) {
     dfsS(root.left, arr);
     dfsS(root.right, arr);
 };
+
+function lca(root, node1, node2) {
+    if(!root) return;
+    if(root.val > Math.max(node1.val, node2.val)) {
+       return lca(root.left, node1, node2)
+    } else if(root.val < Math.min(node1.val, node2.val)) {
+       return lca(root.right, node1, node2)
+    } else {
+        return root;
+    };
+};
