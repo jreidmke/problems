@@ -728,3 +728,20 @@ function dfs(node, arr) {
     dfs(node.left, arr);
     dfs(node.right, arr);
 };
+
+
+function serialize(root) {
+    let res = [];
+    dfsS(root, res);
+    return res.join(' '); 
+};
+
+function dfsS(root, arr) {
+    if(!root) {
+        arr.push("x");
+        return;
+    };
+    arr.push(root.val);
+    dfsS(root.left, arr);
+    dfsS(root.right, arr);
+};
